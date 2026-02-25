@@ -27,6 +27,11 @@ best_mark = np.max(average_score_student)
 standard_deviation = np.std(scores)
 standard_deviation_subject = np.std(scores, axis = 0)
 
+total_score_per_student = np.sum(scores, axis = 1)
+sorted_indices = np.argsort(total_score_per_student)
+top_10_indices = sorted_indices[-10:][::-1]
+top_10_scores = total_score_per_student[top_10_indices]
+
 
 #Analysis:
 
@@ -45,3 +50,6 @@ print(f"Standard Deviation: {standard_deviation}")
 print("Standard Deviation per Subject")
 for subject, std in zip(subjects, standard_deviation_subject):
     print(f"{subject}:  {std:.2f}")
+print("Top 10 Students based on Total Scores:")
+for i, score in zip(top_10_indices, top_10_scores):
+    print(f"Student {i+1}: Total Score = {score}")
