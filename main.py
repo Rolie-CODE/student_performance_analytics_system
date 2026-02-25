@@ -23,8 +23,13 @@ best_student_index = np.argmax(average_score_student)
 best_student_loc = best_student_index + 1
 best_mark = np.max(average_score_student)
 
+
+standard_deviation = np.std(scores)
+standard_deviation_subject = np.std(scores, axis = 0)
+
+
 #Analysis:
-print(scores)
+
 print(f"Number of scores: {number_of_scores}")
 print(f"Number of students: {number_of_students}")
 print(f"Number of subjects: {number_of_subjects}")
@@ -36,3 +41,7 @@ print(f"Best Subject Score: {best_subject_score}")
 print(f"Worst Subject Score: {worst_subject_score}")
 print(f"Best Student: {best_student_loc}")
 print(f"Best Mark: {best_mark}")
+print(f"Standard Deviation: {standard_deviation}")
+print("Standard Deviation per Subject")
+for subject, std in zip(subjects, standard_deviation_subject):
+    print(f"{subject}:  {std:.2f}")
